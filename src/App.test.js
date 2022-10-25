@@ -7,6 +7,7 @@ describe('app component', ()=>{
     // arrange
     render(<App />)
     // assets
+    render(<App />)
     const helloWorldTest = screen.getByText('Hello world', {exact:false})
     expect(helloWorldTest).toBeInTheDocument()
   })
