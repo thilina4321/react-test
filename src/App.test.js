@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react"
+import  userEvent  from "@testing-library/user-event"
 import App from "./App"
 
 describe('app component', ()=>{
@@ -23,5 +24,18 @@ describe('app component', ()=>{
     render(<App />)
     const welcomeText = screen.queryByText('Welcome')
     expect(welcomeText).toBeNull()
+  })
+  test('show welcome text with the login button clicked', ()=>{
+    
+    // arrange
+    render(<App />)
+
+    // act
+    const loginButton = screen.getByRole('button')
+    userEvent.click(loginButton)
+
+    // asserts
+    const welcomeText = screen.getByText('welcome', {exact:false})
+    expect(welcomeText).toBeInTheDocument()
   })
 })
