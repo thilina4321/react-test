@@ -38,4 +38,20 @@ describe('app component', ()=>{
     const welcomeText = screen.getByText('welcome', {exact:false})
     expect(welcomeText).toBeInTheDocument()
   })
+  test('show the property list when property fetch successfully', async()=>{
+    // arange
+    window.fetch = jest.fn()
+    window.fetch.mockResolvedValueOnce({
+      json : async ()=>[{userId :"property 1"}]
+      
+    })
+    render(<App />)
+
+
+    // asserts
+    const listItems = await screen.findAllByRole("listitem")
+    expect(listItems).not.toHaveLength(0)
+
+
+  })
 })
