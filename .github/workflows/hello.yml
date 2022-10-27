@@ -1,0 +1,9 @@
+name: hello workflow
+on: workflow_dispath
+
+jobs:
+  hello-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print hello
+        run: echo print hello successfully
